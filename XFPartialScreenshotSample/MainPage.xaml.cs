@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using ImageFromXamarinUI;
 
 namespace XFPartialScreenshotSample
 {
@@ -13,6 +14,12 @@ namespace XFPartialScreenshotSample
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        {
+            var imageStream = await header.CaptureImageAsync();
+            ResultImage.Source = ImageSource.FromStream(() => imageStream);
         }
     }
 }
